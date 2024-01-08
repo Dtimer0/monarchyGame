@@ -1,3 +1,3 @@
-pub fn test() {
+pub fn quiz() {
     println!("Hello, world!");
 }

@@ -1,24 +1,25 @@
 pub struct QuizBlock {
-    question: String,
-    answers: [QuizAnswer; 4],
-    answer_explanation: String,
+    pub question: String,
+    pub answers: [QuizAnswer; 4],
+    pub answer_explanation: String,
 }
 
 pub struct QuizAnswer {
-    answer: String,
-    is_correct: bool,
+    pub answer: String,
+    pub is_correct: bool,
 }
 
 pub struct CyoaBlock {
-    question: String,
-    answers: [cyoaAnswer; 4],
-    leader_alias: String,
+    pub question: String,
+    pub answers: [CyoaAnswer; 4],
+    pub leader_alias: String,
 }
 
 pub struct CyoaAnswer {
-    alias: String,
-    answer: String,
-    is_correct: bool,
-    weight: f32,
-    public_favor: f32,
+    pub alias: String,
+    pub answer: String,
+    pub is_correct: bool,
+    pub weight: f32,
+    pub public_favor: f32,
 }
+
