@@ -56,7 +56,7 @@ fn quiz_test() {
     }
     println!("");
     println!("Your score is: {}/{}, or a {}%", score, quiz_len, (score as f32 / quiz_len as f32) * 100.0);
-    println!("Your time was: {} seconds", start.elapsed().as_secs());
+    println!("Your time was: {} seconds", start.elapsed().as_millis() as f32 / 1000.0);
 }
 fn quiz_walkthrough() {
     let quiz: [QuizBlock; 16] = build_quiz();
