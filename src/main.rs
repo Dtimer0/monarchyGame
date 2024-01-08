@@ -5,15 +5,14 @@ mod variants {
 pub mod toolbox;
 pub mod types;
 
-use variants::cyoa;
-use variants::quiz;
 
 use crate::toolbox::readline;
 use crate::variants::cyoa::cyoa;
 use crate::variants::quiz::quiz;
 
 fn main() {
-    println!("Hello, welcome to this text-based adventure. In this game, you will go through a series of questions, which you will answer by entering text into the console. You have two options: Play this game as a quiz(1), or play this game as a choose your own adventure(2). Which do you choose? Press 1 go play the game as a quiz, or 2 to play it as a choose your own adventure.");
+    println!("Hello, welcome to this text-based adventure. In this game, you will go through a series of questions, which you will answer by entering text into the console. You have two options: Play this game as a quiz, or play this game as a choose your own adventure.");
+    println!("Enter 1 to play the quiz, or 2 to play the choose your own adventure:");
     loop {
         let option = readline();
         if option == "1" {
