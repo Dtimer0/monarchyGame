@@ -9,3 +9,4 @@ edition = "2021"
 
 [profile.dev]
 opt-level = 3
+
