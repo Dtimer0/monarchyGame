@@ -11,6 +11,7 @@ pub struct QuizAnswer {
 }
 
 pub struct CyoaBlock {
+    pub date: Date,
     pub question: &'static str,
     pub answers: [CyoaAnswer; 4],
     pub leader_alias: &'static str,
