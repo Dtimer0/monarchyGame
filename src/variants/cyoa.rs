@@ -3,6 +3,7 @@ use crate::types::*;
 use crate::toolbox::*;
 
 pub fn cyoa() {
+    println!("Welcome to this choose your own adventure game. This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public opinion rating, or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be showed to you at the end of the game. Otherwise, certain decisions can lead to you losing the game. There are 2 ways to win the game, see if you can find both!");
     let web = build_cyoa();
     let mut current = "start";
     let mut public_opinion = 0.0;
@@ -85,8 +86,26 @@ pub fn cyoa() {
         british_opinion += answer_.british_favor;
         current = answer_.pointer_alias;
         println!("");
-        println!("Current Public Opinion: {}%", round((public_opinion / qs_answered) * 100.0, 2));
-        println!("Current British Opinion: {}%", round((british_opinion / qs_answered) * 100.0, 2));
+        println!("Current Public Opinion:");
+        print!("[");
+        for i in 0..round((public_opinion / qs_answered) * 100.0, 0) as i32 {
+            print!("█");
+        }
+        for i in round((public_opinion / qs_answered) * 100.0, 0) as i32..100 {
+            print!(" ");
+        }
+        print!("]");
+        println!(" {}%", round((public_opinion / qs_answered) * 100.0, 0) as i32);
+        println!("Current British Opinion:");
+        print!("[");
+        for i in 0..round((british_opinion / qs_answered) * 100.0, 0) as i32 {
+            print!("█");
+        }
+        for i in round((british_opinion / qs_answered) * 100.0, 0) as i32..100 {
+            print!(" ");
+        }
+        print!("]");
+        println!(" {}%", round((british_opinion / qs_answered) * 100.0, 0) as i32);
         if answer_.is_historically_accurate {
             historical_accuracy += 1.0;
         }
@@ -266,7 +285,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                     pointer_alias: "treaty",
                     answer: "Call an election fought on the matter of Conscription",
                     public_favor: 1.0,
-                    british_favor: 1.0,
+                    british_favor: 0.7,
                 },
                 CyoaAnswer {
                     is_historically_accurate: false,
