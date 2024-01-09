@@ -87,6 +87,9 @@ pub fn cyoa() {
         println!("");
         println!("Current Public Opinion: {}%", round((public_opinion / qs_answered) * 100.0, 2));
         println!("Current British Opinion: {}%", round((british_opinion / qs_answered) * 100.0, 2));
+        if answer_.is_historically_accurate {
+            historical_accuracy += 1.0;
+        }
         if round((public_opinion / qs_answered) * 100.0, 2) < 10.0 {
             current = "canadianoverthrow";
             break 'outer;
