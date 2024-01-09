@@ -14,15 +14,15 @@ pub struct CyoaBlock {
     pub date: Date,
     pub question: &'static str,
     pub answers: [CyoaAnswer; 4],
-    pub leader_alias: &'static str,
+    pub alias: &'static str,
 }
 
 pub struct CyoaAnswer {
-    pub alias: &'static str,
+    pub game_over: bool,
+    pub pointer_alias: &'static str,
     pub answer: &'static str,
-    pub is_correct: bool,
-    pub weight: f32,
     pub public_favor: f32,
+    pub british_favor: f32,
 }
 
 pub struct Date {
@@ -31,3 +31,7 @@ pub struct Date {
     pub day: u8,
 }
 
+pub struct GameOver {
+    pub alias: &'static str,
+    pub reason: &'static str,
+}

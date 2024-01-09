@@ -1,4 +1,5 @@
 use crate::types::*;
+#[allow(unreachable_code)]
 
 pub fn readline() -> String {
     let line = std::io::stdin().lines().next().unwrap().unwrap();
@@ -9,6 +10,7 @@ impl QuizBlock {
         return format!("{} {}, {}", self.date.month, self.date.day, self.date.year);
     }
 }
+
 
 pub fn build_quiz() -> [QuizBlock; 16] {
     return [
@@ -448,4 +450,374 @@ QuizBlock {
     answer_explanation: "After the queen had passed, the prime minister made a heartfelt speech, where he was moved to tears. This showed our appreciation for the British Monarchy, and how much we value our relationship with Britain",
 },
     ];
+}
+
+
+
+
+
+pub fn build_cyoa() -> Vec<CyoaBlock> {
+    Vec::from([
+        CyoaBlock {
+            date: Date {day: 28, month: "July", year: 1914},
+            question: "War is breaking out. You meet with your cabinet to decide what to do about it.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "ultimatum",
+                    answer: "Wait for instructions from the Monarchy",
+                    public_favor: 1.0,
+                    british_favor: 2.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "peacekeeping1",
+                    answer: "Send soldiers to act as peacekeepers",
+                    public_favor: 1.5,
+                    british_favor: 0.8,
+                }, 
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "300000",
+                    answer: "Send soldiers to aid Serbia",
+                    public_favor: 1.0,
+                    british_favor: 1.2,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "majorlossgermany",
+                    answer: "Send soldiers to aid Austria-Hungary",
+                    public_favor: 0.3,
+                    british_favor: 0.1,
+                },
+                
+            ],
+            alias: "start",
+        }, 
+        CyoaBlock {
+            date: Date {day: 3, month: "August", year: 1914},
+            question: "Britain issues an ultimatum to Germany asking that they withdraw their forces from Belgium, or they will be at war. August 4, 1914. Germany does not concede, and Britain, and Canada, are now at war. Britain asks for an initial 25 000 soldiers to help fight.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "treaty",
+                    answer: "Send the 25 000 soldiers they requested, but refuse more",
+                    public_favor: 0.9,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "300000",
+                    answer: "Send 25 000 soldiers, and create the war measures act, to be declared 21 days later.",
+                    public_favor: 0.8,
+                    british_favor: 1.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Refuse to enter into the war",
+                    public_favor: 0.95,
+                    british_favor: 0.5,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "riotsinquebec",
+                    answer: "Send 25 000 soldiers, and start conscriptions",
+                    public_favor: 0.7,
+                    british_favor: 1.0,
+                },
+            ],
+            alias: "ultimatum",
+        },
+        CyoaBlock {
+            date: Date {day: 29, month: "August", year: 1917},
+            question: "300 000 soldiers had already volunteered to fight overseas, a massive amount for the population of only 8 million. However, Britain needs more soldiers.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Tell Britain that we cannot support the strain on our population",
+                    public_favor: 0.8,
+                    british_favor: 0.2,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "treaty",
+                    answer: "Campaign to try to get another 10 000 soldiers to fight, but refuse any more after",
+                    public_favor: 0.8,
+                    british_favor: 0.6,
+                },
+                CyoaAnswer {
+                    game_over: false, 
+                    pointer_alias: "riotsinquebec",
+                    answer: "Declare the Military Service Act, forcing conscription to all able male citizens between 20 and 45.",
+                    public_favor: 0.5,
+                    british_favor: 1.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "riotsinquebec",
+                    answer: "Declare the Military Service Act, forcing conscription to all able citizens between 20 and 45.",
+                    public_favor: 0.4,
+                    british_favor: 0.95,
+                },
+
+            ],
+            alias: "300000",
+        },
+        CyoaBlock {
+            date: Date {
+                day: 7,
+                month: "December",
+                year: 1917,
+            },
+            question: "There is outcry about forced conscription. Riots break out in Quebec, as much of French Canada has opposed the war, and they refuse to be forced to fight in it.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "treaty",
+                    answer: "Continue the program to conscript more soldiers",
+                    public_favor: 0.2,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "End the Military Service Act",
+                    public_favor: 0.8,
+                    british_favor: 0.4,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "treaty",
+                    answer: "Call an election fought on the matter of Conscription",
+                    public_favor: 1.0,
+                    british_favor: 1.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "treaty",
+                    answer: "Make a public statement about the lack of sense of Civic Duty in French Canada, and call French Canadians traitors to Canada, and continue to conscript.",
+                    public_favor: 0.2,
+                    british_favor: 0.35,
+                },               
+            ],
+            alias: "riotsinquebec",
+        },
+        CyoaBlock {
+            date: Date {day: 28, month: "June", year: 1919},
+            question: "The war ended nearly a year ago. You are called to join deliberations in Paris on what the punishment for losing the war for Germany, Austria-Hungry, and Turkey. It is decided that Germany will have to pay reparations, Germany and the Ottoman Empire will hand overseas possession to France and Britain, and the drawing of new national boundaries to better represent ethnic borders. You are at the Paris Peace Conference, and each leader is signing the Treaty of Versailles. Initially, Canada was brought in for deliberations, but would not sign the Treaty, as it was a British Colony. However, Canada contributed a lot to the war, and deserves recognition.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Demand the right to sign the Treaty of Versailles.",
+                    public_favor: 1.0,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Ask Britain politely to sign the Treaty Independently",
+                    public_favor: 0.8,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Do nothing",
+                    public_favor: 0.5,
+                    british_favor: 0.6,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Wait until everyone else has signed and left, and then track the carrier of the Treaty and secretly sign it when they aren't looking.",
+                    public_favor: 0.5,
+                    british_favor: 0.5,
+                },
+            ],
+            alias: "treaty",
+        },
+        CyoaBlock {
+            date: Date {
+                day: 14,
+                month: "September",
+                year: 1914
+            },
+            question: "The peacekeeping force has not been very successful. The war is becoming more and more deadly.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "peacekeeping2",
+                    answer: "Send more peacekeepers",
+                    public_favor: 1.0,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Withdraw all forces and refuse to participate in the war.",
+                    public_favor: 0.7,
+                    british_favor: 0.3,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "300000",
+                    answer: "Order your soldiers to fight for Britain",
+                    public_favor: 0.7,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "majorlossgermany",
+                    answer: "Order your soldiers to fight for Germany",
+                    public_favor: 0.1,
+                    british_favor: -0.5,
+                }
+            ],
+            alias: "peacekeeping1",
+        },
+        CyoaBlock {
+            date: Date {day: 31, month: "March", year: 1915},
+            question: "The peacekeeping has been entirely unsuccessful. You have no choice, you must choose a side, or withdraw all soldiers.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "majorlossgermany",
+                    answer: "Order your soldiers to fight for Germany",
+                    public_favor: 0.1,
+                    british_favor: -0.5,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "300000",
+                    answer: "Order your soldiers to fight for Britain",
+                    public_favor: 0.7,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Withdraw all forces and refuse to participate in the war.",
+                    public_favor: 0.7,
+                    british_favor: 0.3,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "300000",
+                    answer: "Order your soldiers to fight for Britain and send another 50000 soldiers",
+                    public_favor: 0.7,
+                    british_favor: 0.9,
+                },
+            ],
+            alias: "peacekeeping2",
+        },
+        CyoaBlock {
+            date: Date {day: 30, month: "September", year: 1917},
+            question: "You have lost a lot of soldiers, and it seems like you are about to lose the war.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "whiteflag",
+                    answer: "Tell your soldiers to return to being peacekeepers.",
+                    public_favor: 0.7,
+                    british_favor: 0.5,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "whiteflag",
+                    answer: "Tell Germany you can no longer support them and withdraw all soldiers",
+                    public_favor: 0.7,
+                    british_favor: 0.7, 
+                },
+                CyoaAnswer {
+                    game_over: true,
+                    pointer_alias: "invasion",
+                    answer: "Order your soldiers to continue fighting for Germany",
+                    public_favor: 0.1,
+                    british_favor: -0.5,
+                },
+                CyoaAnswer {
+                    game_over: false, 
+                    pointer_alias: "treaty",
+                    answer: "Order your soldiers to turn on the Germans",
+                    public_favor: 0.7,
+                    british_favor: 0.9,
+                }
+            ],
+            alias: "majorlossgermany",
+            
+        },
+        CyoaBlock {
+            date: Date {day: 11, month: "November", year: 1918},
+            question: "Germany waves the white flag, and the war is over. Britain is extremely angry you betrayed them. Now, you need to take action.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Apologize deeply for your mistake, and pledge forever allegiance in the future.",
+                    public_favor: 0.75,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    game_over: true,
+                    pointer_alias: "invasion",
+                    answer: "Tell Britain you will never apologize, and that you will never be their ally again.",
+                    public_favor: 0.1,
+                    british_favor: -1.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Pay reparations and apologize",
+                    public_favor: 0.8,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "westminster",
+                    answer: "Pay reparations, but refuse to apologize",
+                    public_favor: 0.85,
+                    british_favor: 0.6,
+                },
+            ],
+            alias: "whiteflag",
+        },
+        CyoaBlock {
+            date: Date {day: 11, month: "December", year: 1931},
+            question: "The Statute of Westminster, this increases the sovereignty of British Colonies by removing almost all power of the British Government to Legislate in Dominions.",
+            answers: [
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "filler",
+                    answer: "filler1",
+                    public_favor: 0.0,
+                    british_favor: 0.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "filler",
+                    answer: "filler2",
+                    public_favor: 0.0,
+                    british_favor: 0.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "filler",
+                    answer: "filler3",
+                    public_favor: 0.0,
+                    british_favor: 0.0,
+                },
+                CyoaAnswer {
+                    game_over: false,
+                    pointer_alias: "filler",
+                    answer: "filler4",
+                    public_favor: 0.0,
+                    british_favor: 0.0,
+                },
+            ],
+            alias: "westminster",
+        }
+    ])
 }
