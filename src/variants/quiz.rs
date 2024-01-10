@@ -102,6 +102,8 @@ fn quiz_walkthrough() {
         sleep(Duration::from_secs(5));
 
     }
+    println!("You have finished the quiz!");
+    println!("As you can see, the Canadian government has changed its attitude towards the British monarchy over time. In the beginning, Canada was a early colony of Britain, and so Canada and Britain had a very close relationship. However, as time went on, Canada became more independent, and the government began to distance itself more from the British monarchy. This is shown in Canada more and more often refusing to participate in British warfar(Such as the Suez Crisis), and Canada signing treaties independantly(Such as the Treaty of Versailles). Additionally, the average Canadian citizen is also less loyal to the British government. This was recently refled in a poll which showed 54% of Canadians believe Canada should end all ties to the British monarchy(Ipsos, 2023). Overall, Canada has been becoming more and more distant from the British monarchy, and this trend will likely continue in the future.");
 }
 
 pub fn build_quiz() -> [QuizBlock; 16] {

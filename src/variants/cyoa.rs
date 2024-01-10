@@ -6,9 +6,9 @@ pub fn cyoa() {
     println!("Welcome to this choose your own adventure game. This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public opinion rating, or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be showed to you at the end of the game. Otherwise, certain decisions can lead to you losing the game. There are 2 ways to win the game, see if you can find both!");
     let web = build_cyoa();
     let mut current = "start";
-    let mut public_opinion = 0.0;
-    let mut british_opinion = 0.0;
-    let mut qs_answered = 0.0;
+    let mut public_opinion = 1.0;
+    let mut british_opinion = 1.0;
+    let mut qs_answered = 1.0;
     let mut historical_accuracy = 0.0;
     let mut current_block: CyoaBlock = CyoaBlock {
         date: Date {day: 28, month: "July", year: 1914},
@@ -51,6 +51,12 @@ pub fn cyoa() {
         alias: "start",
     };
     'outer: loop {
+        if british_opinion > qs_answered {
+            british_opinion = qs_answered;
+        }
+        if public_opinion > qs_answered {
+            public_opinion = qs_answered;
+        }
         'forloopinweb: for i in &web {
             if i.alias == current {
                 current_block = i.clone();
@@ -124,9 +130,9 @@ pub fn cyoa() {
     }
     for i in &build_over() {
         if i.alias == current {
+            println!("{}", i.reason);
             println!("Game Over!");
             println!("Your historical accuracy: {}%", round(historical_accuracy / qs_answered * 100.0, 2));
-            println!("Reason: {}", i.reason);
             return;
         }
     }
@@ -726,14 +732,368 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                 },
                 CyoaAnswer {
                     is_historically_accurate: false,
-                    game_over: false,
-                    pointer_alias: "ohnofrance",
+                    game_over: true,
+                    pointer_alias: "axisw",
                     answer: "Secretly send resources to the Axis",
                     public_favor: 0.7,
                     british_favor: 0.9, // This is because Britain is not aware of this, and 9 should be around the right amount to keep neutral
                 },
             ],
             alias: "britainfalling",
+        },
+        CyoaBlock {
+            date: Date {day: 29, month: "October", year: 1956},
+            question: "Britain, France, and Israel device to invade Egypt and the Gaza Strip, due to the Egypt government seizing the Suez Canal. This is worrying to the British because Britain has a lot of oil that travels through, and now Egypt has the power to cripple Britain's oil economy. Britain asks for our help.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "unpeace",
+                    answer: "Refuse to assist in the takeover.",
+                    public_favor: 1.0,
+                    british_favor: 0.6,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "endsoon",
+                    answer: "Send soldiers to fight alongside the British.",
+                    public_favor: 0.6,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "endsoon",
+                    answer: "Send funds, resources, and soldiers.",
+                    public_favor: 0.7,
+                    british_favor: 0.9,
+
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "csupe",
+                    answer: "Support Egypt by sending resources and soldiers.",
+                    public_favor: 0.2,
+                    british_favor: 0.3,
+                },
+            ],
+            alias: "suezinvasion"
+        },
+        CyoaBlock {
+            date: Date {day: 4, month: "November", year: 1956},
+            question: "The United Nations meets to discuss how they might be able to calm the war in Egypt. You have the opportunity to \"suggest\" a proposition for our UN rep, Lester B. Pearson, to propose to the UN(This suggestion did not happen, it is purely to have player make this decision).",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "He will make a great suggestion no matter what, and he should go with his gut.",
+                    public_favor: 0.8,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "offerdecision",
+                    answer: "He should definitely propose that the UN support Britain, France, and Israel.",
+                    public_favor: 0.8,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "He should propose a large UN peacekeeping force.",
+                    public_favor: 1.0,
+                    british_favor: 0.6,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "csupe",
+                    answer: "He should propose supporting Egypt",
+                    public_favor: 0.4,
+                    british_favor: 0.1,
+                },
+            ],
+            alias: "unpeace"
+        },
+        CyoaBlock {
+            date: Date {day: 15, month: "June", year: 1964},
+            question: "Canadians are unhappy with our current flag, still bearing the Union Jack.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "rene",
+                    answer: "Ignore them.",
+                    public_favor: 0.3,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "rene",
+                    answer: "Propose a new design, that still has the Union Jack, just smaller.",
+                    public_favor: 0.6,
+                    british_favor: 0.2,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "rene",
+                    answer: "Ask Britain to make a design for us.",
+                    public_favor: 0.4,
+                    british_favor: 0.6,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "rene",
+                    answer: "Form a committee to design a new flag.",
+                    public_favor: 0.8,
+                    british_favor: 0.7,
+                },
+            ],
+            alias: "flag",
+        },
+        CyoaBlock {
+            date: Date {day: 14, month: "May", year: 1980},
+            question: "Premier of Quebec René Lévesque, is calling a referendum to decide whether Quebec should advocate to secede from Canada.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Say that you support Quebec's attempt at secession, and that you hope they succeed.",
+                    public_favor: 0.5,
+                    british_favor: 0.2,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Make no statement on the matter",
+                    public_favor: 0.6,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Say you do not support the referendum, and  call it unconstitutional, disrespectful, and stupid.",
+                    public_favor: 0.2,
+                    british_favor: 0.2,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Say you do not support it, because you feel Quebec is a very important part of Canadian culture, and that it would be tragic to lose such an important part of our culture.",
+                    public_favor: 1.0,
+                    british_favor: 0.9,
+                },
+                
+            ],
+            alias: "rene",
+        },
+        CyoaBlock {
+            date: Date {day: 4, month: "Novemeber", year: 1963},
+            question: "Britain is extremely angry that Canada is supporting Egypt. They say you have one chance to remedy your mistake.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Apologize, but don't withdraw support.",
+                    public_favor: 0.6,
+                    british_favor: -2.5,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Withdraw support for Egypt, but don't apologize.",
+                    public_favor: 0.9,
+                    british_favor: -0.5,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Don't apologize, and don't withdraw support.",
+                    public_favor: 0.4,
+                    british_favor: -3.5,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Apologize and withdraw support",
+                    public_favor: 0.7,
+                    british_favor: 0.8,
+                },
+            ],
+            alias: "csupe",
+        },
+        CyoaBlock {
+            date: Date {day: 31, month: "October", year: 1956},
+            question: "The war is going well, it seems like things will end soon. However, you have lost a lot of soldiers.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "unpeace",
+                    answer: "Order your soldiers to withdraw",
+                    public_favor: 0.7,
+                    british_favor: 0.5,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "esurrender",
+                    answer: "Offer surrender to Egypt.",
+                    public_favor: 0.7,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "symbol",
+                    answer: "Send more, hoping it will help it end faster",
+                    public_favor: 0.5,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Surrender the whole war for Britain.",
+                    public_favor: 0.8,
+                    british_favor: -1.0,
+                }
+                
+            ],
+            alias: "endsoon",
+        },
+        CyoaBlock {
+            date: Date {day: 16, month: "November", year: 1956},
+            question: "With the new assistance, the war is about to end. As a symbol of their thanks, Britain offers you the decision on how to continue.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "nocontrol",
+                    answer: "Continue the invasion to fully decimate their army.",
+                    public_favor: 0.6,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "nocontrol",
+                    answer: "Assassinate Egypts president, Abdel Nasser.",
+                    public_favor: 0.3,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "flag",
+                    answer: "Surrender the war for Britain.",
+                    public_favor: 0.2,
+                    british_favor: 0.0,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "esurrender",
+                    answer: "Offer surrender.",
+                    public_favor: 0.8,
+                    british_favor: 0.6,
+                }
+            ],
+            alias: "symbol",
+        },
+        CyoaBlock {
+            date: Date {day: 17, month: "November", year: 1956},
+            question: "Egypt surrenders and gives control of the Suez Canal to Israel. You are asked to make a public statement about it.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Announce that the canal should be given entirely to Britain.",
+                    public_favor: 0.5,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Say that you are happy Israel has the canal, and it is in safe hands.",
+                    public_favor: 0.8,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Suggest that Canada should own the canal.",
+                    public_favor: 0.3,
+                    british_favor: 0.4,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Announce your regret at the invasion and it should have never happened.",
+                    public_favor: 0.1,
+                    british_favor: 0.2,
+                }
+            ],
+            alias: "esurrender",
+        },
+        CyoaBlock {
+            date: Date {day: 26, month: "November", year: 1956},
+            question: "It works, and Egypt relinquishes control of the Suez Canal to Israel. You are asked to make a public statement about it.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Announce that the canal should be given entirely to Britain.",
+                    public_favor: 0.5,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Say that you are happy Israel has the canal, and it is in safe hands.",
+                    public_favor: 0.8,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Suggest that Canada should own the canal.",
+                    public_favor: 0.3,
+                    british_favor: 0.4,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "losingfavour",
+                    answer: "Announce your regret at the invasion and it should have never happened.",
+                    public_favor: 0.1,
+                    british_favor: 0.2,
+                }
+            ],
+            alias: "nocontrol",
         }
     ])
 }
