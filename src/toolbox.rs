@@ -1,8 +1,14 @@
+use std::io::Write;
+
 use crate::types::*;
 #[allow(unreachable_code)]
 
 pub fn readline() -> String {
-    let line = std::io::stdin().lines().next().unwrap().unwrap();
+    let mut line = String::new();
+    print!("Enter: ");
+    let _ = std::io::stdout().flush();   
+    std::io::stdin().read_line(&mut line).unwrap();
+    line = line.trim().to_string();
     return line;
 }
 impl QuizBlock {

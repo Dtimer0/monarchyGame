@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use crate::types::*;
 use crate::toolbox::*;
-
+// As the game progresses, bonuses become larger, and penalties become smaller, as you are expected to lose more than you win.
 pub fn cyoa() {
     println!("Welcome to this choose your own adventure game. This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public opinion rating, or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be showed to you at the end of the game. Otherwise, certain decisions can lead to you losing the game. There are 2 ways to win the game, see if you can find both!");
     let web = build_cyoa();
@@ -67,7 +67,7 @@ pub fn cyoa() {
         println!("C. {}", current_block.answers[2].answer);
         println!("D. {}", current_block.answers[3].answer);
         let answer = readline();
-        let mut answer_: CyoaAnswer;
+        let answer_: CyoaAnswer;
         qs_answered += 1.0;
         if let Ok(answer) = answer.parse::<i8>() {
             let answer: usize = (answer - 1) as usize;
@@ -88,20 +88,20 @@ pub fn cyoa() {
         println!("");
         println!("Current Public Opinion:");
         print!("[");
-        for i in 0..round((public_opinion / qs_answered) * 100.0, 0) as i32 {
+        for _ in 0..round((public_opinion / qs_answered) * 100.0, 0) as i32 {
             print!("█");
         }
-        for i in round((public_opinion / qs_answered) * 100.0, 0) as i32..100 {
+        for _ in round((public_opinion / qs_answered) * 100.0, 0) as i32..100 {
             print!(" ");
         }
         print!("]");
         println!(" {}%", round((public_opinion / qs_answered) * 100.0, 0) as i32);
         println!("Current British Opinion:");
         print!("[");
-        for i in 0..round((british_opinion / qs_answered) * 100.0, 0) as i32 {
+        for _ in 0..round((british_opinion / qs_answered) * 100.0, 0) as i32 {
             print!("█");
         }
-        for i in round((british_opinion / qs_answered) * 100.0, 0) as i32..100 {
+        for _ in round((british_opinion / qs_answered) * 100.0, 0) as i32..100 {
             print!(" ");
         }
         print!("]");
@@ -505,37 +505,235 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                 CyoaAnswer {
                     is_historically_accurate: false,
                     game_over: false,
-                    pointer_alias: "filler",
-                    answer: "filler1",
-                    public_favor: 0.0,
-                    british_favor: 0.0,
+                    pointer_alias: "ww2",
+                    answer: "State that this change is not enough, and the British government needs to give us more sovereignty.",
+                    public_favor: 1.0,
+                    british_favor: 0.2,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "ww2",
+                    answer: "Embrace this change fully",
+                    public_favor: 1.0,
+                    british_favor: 1.0,
                 },
                 CyoaAnswer {
                     is_historically_accurate: false,
                     game_over: false,
-                    pointer_alias: "filler",
-                    answer: "filler2",
-                    public_favor: 0.0,
-                    british_favor: 0.0,
+                    pointer_alias: "ww2",
+                    answer: "Embrace the change, but assure Britain that we will continue to be a large supporter of British action",
+                    public_favor: 1.0,
+                    british_favor: 1.0,
                 },
                 CyoaAnswer {
                     is_historically_accurate: false,
                     game_over: false,
-                    pointer_alias: "filler",
-                    answer: "filler3",
-                    public_favor: 0.0,
-                    british_favor: 0.0,
-                },
-                CyoaAnswer {
-                    is_historically_accurate: false,
-                    game_over: false,
-                    pointer_alias: "filler",
-                    answer: "filler4",
-                    public_favor: 0.0,
-                    british_favor: 0.0,
+                    pointer_alias: "lying",
+                    answer: "Publicly state that this change gives Canada full sovereignty, and that we are fully separated from the Monarchy.",
+                    public_favor: 9.0,
+                    british_favor: 0.2,
                 },
             ],
             alias: "westminster",
+        },
+        CyoaBlock {
+            date: Date {day: 10, month: "September", year: 1939},
+            question: "WW2 is breaking out. There is a predicted high death rate in Infantry.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ohnofrance",
+                    answer: "Declare war on Germany and send Infantry Battalions to assist the British.",
+                    public_favor: -0.6,
+                    british_favor: 1.0,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "ohnofrance",
+                    answer: "Declare war on Germany but discourage Infantry Battalions, and instead provide resources to assist Britain.",
+                    public_favor: 0.7,
+                    british_favor: 0.7,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: true,
+                    pointer_alias: "poordecision",
+                    answer: "Declare war on Britain",
+                    public_favor: 0.1,
+                    british_favor: -1.0,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "britainfalling",
+                    answer: "Do not declare war",
+                    public_favor: 0.6,
+                    british_favor: 0.2,
+                },
+            ],
+            alias: "ww2",
+        },
+        CyoaBlock {
+            date: Date {day: 1, month: "January", year: 1940},
+            question: "France has fallen, and Canada is now Britains most important ally.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "gift",
+                    answer: "Send more soldiers",
+                    public_favor: 0.8,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "gift",
+                    answer: "Provide naval defence against Germany submarines.",
+                    public_favor: 0.8,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "gift",
+                    answer: "Send more equipment.",
+                    public_favor: 0.9,
+                    british_favor: 0.75,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "gift",
+                    answer: "Do all of the above.",
+                    public_favor: 0.7,
+                    british_favor: 1.0,
+                },
+                
+            ],
+            alias: "ohnofrance",
+        },
+        CyoaBlock {
+            date: Date {day: 1, month: "January", year: 1940},
+            question: "Britain needs more money to continue funding the war.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: true,
+                    game_over: false,
+                    pointer_alias: "suezinvasion",
+                    answer: "Grant the British ~3 billion dollars",
+                    public_favor: 0.6,
+                    british_favor: 1.0,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "suezinvasion",
+                    answer: "Grant the British ~100 billion dollars",
+                    public_favor: -0.8,
+                    british_favor: 1.5,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: true,
+                    pointer_alias: "axisw2",
+                    answer: "Refuse to give Britain any money",
+                    public_favor: 0.7,
+                    british_favor: -1.0,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "suezinvasion",
+                    answer: "Tell the British we can't afford sending money, but we can send soldiers. ",
+                    public_favor: 0.8,
+                    british_favor: 0.7,
+                }
+                
+            ],
+            alias: "gift",
+        },
+        CyoaBlock {
+            date: Date {day: 13, month: "December", year: 1931},
+            question: "Britain publicly calls you out for lying about Canada having full sovereignty.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ww2",
+                    answer: "Apologize for lying.",
+                    public_favor: 0.8,
+                    british_favor: 0.8,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ww2",
+                    answer: "Apologize and offer raw resources as a symbol of our apology.",
+                    public_favor: 0.7,
+                    british_favor: 0.9,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: true,
+                    pointer_alias: "poordecision",
+                    answer: "Announce that this Britain is trying to take back their decision, and that you will invade Britain as revenge for the insult to Canada's pride.",
+                    public_favor: 0.2,
+                    british_favor: 0.0,
+                },
+                CyoaAnswer { //TODO: Remember this is a loop
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "lying",
+                    answer: "Say that Canada really is fully independent",
+                    public_favor: 0.7,
+                    british_favor: 0.2,
+                }
+                
+            ],
+            alias: "lying",
+        },
+        CyoaBlock {
+            date: Date {day: 4, month: "April", year: 1939},
+            question: "Canada watches as Britain becomes closer and closer to falling, while Canada still sits idle.",
+            answers: [
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ohnofrance",
+                    answer: "Send soldiers to assist Britain.",
+                    public_favor: 0.7,
+                    british_favor: 1.4,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ohnofrance",
+                    answer: "Send equipment and resources",
+                    public_favor: 0.8,
+                    british_favor: 0.7,
+                }, 
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: true,
+                    pointer_alias: "axisw",
+                    answer: "Remain neutral",
+                    public_favor: 0.5,
+                    british_favor: 0.1,
+                },
+                CyoaAnswer {
+                    is_historically_accurate: false,
+                    game_over: false,
+                    pointer_alias: "ohnofrance",
+                    answer: "Secretly send resources to the Axis",
+                    public_favor: 0.7,
+                    british_favor: 0.9, // This is because Britain is not aware of this, and 9 should be around the right amount to keep neutral
+                },
+            ],
+            alias: "britainfalling",
         }
     ])
 }
@@ -553,6 +751,18 @@ pub fn build_over() -> Vec<GameOver> {
         GameOver {
             alias: "canadianoverthrow",
             reason: "The public has lost all faith in you, and you overthrown.",
+        },
+        GameOver {
+            alias: "poordecision",
+            reason: "That was a poor decision. Britain's army vastly overpowers yours and the government is overthrown.",
+        },
+        GameOver {
+            alias: "axisw",
+            reason: "Britain has fallen and despite Canada remaining neutral, the Axis is unstoppable, and without Britains protection, Canada is easily overpowered by the Axis",
+        },
+        GameOver {
+            alias: "axisw2",
+            reason: "Britain has fallen, due to a lack of resources to continue the war, and Canada is easily overpowered by the Axis",
         }
     ])
 
