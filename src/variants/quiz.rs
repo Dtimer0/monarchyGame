@@ -45,7 +45,7 @@ fn quiz_test() {
                 score += 1;
             } 
         } 
-        else if let Some(answer_num) = letter_to_num.get(&answer) {
+        else if let Some(answer_num) = letter_to_num.get(&answer.to_uppercase()) {
             let answer_num = *answer_num as usize;
             if Question.answers[answer_num].is_correct {
                 score += 1;
@@ -99,7 +99,7 @@ fn quiz_walkthrough() {
         println!("The correct answer was: {}", correct_answer);
         println!("");
         println!("{}", Question.answer_explanation);
-        sleep(Duration::from_secs(5));
+        sleep(Duration::from_secs(3));
 
     }
     println!("You have finished the quiz!");

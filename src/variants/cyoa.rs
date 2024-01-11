@@ -83,7 +83,7 @@ pub fn cyoa() {
             let answer: usize = (answer - 1) as usize;
             answer_ = current_block.answers[answer].clone();
 
-        } else if let Some(answer_num) = letter_to_num.get(&answer) {
+        } else if let Some(answer_num) = letter_to_num.get(&answer.to_uppercase()) {
             let answer_num = *answer_num as usize;
             answer_ = current_block.answers[answer_num].clone();
             
