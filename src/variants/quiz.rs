@@ -103,7 +103,7 @@ fn quiz_walkthrough() {
 
     }
     println!("You have finished the quiz!");
-    println!("As you can see, the Canadian government has changed its attitude towards the British monarchy over time. In the beginning, Canada was a early colony of Britain, and so Canada and Britain had a very close relationship. However, as time went on, Canada became more independent, and the government began to distance itself more from the British monarchy. This is shown in Canada more and more often refusing to participate in British warfar(Such as the Suez Crisis), and Canada signing treaties independantly(Such as the Treaty of Versailles). Additionally, the average Canadian citizen is also less loyal to the British government. This was recently refled in a poll which showed 54% of Canadians believe Canada should end all ties to the British monarchy(Ipsos, 2023). Overall, Canada has been becoming more and more distant from the British monarchy, and this trend will likely continue in the future.");
+    println!("As you can see, the Canadian government has changed its attitude towards the British monarchy over time. In the beginning, Canada was a early colony of Britain, and so Canada and Britain had a very close relationship. However, as time went on, Canada became more independent, and the government began to distance itself more from the British monarchy. This is shown in Canada more and more often refusing to participate in British warfar(Such as the Suez Crisis), and Canada signing treaties independantly(Such as the Treaty of Versailles). Additionally, the average Canadian citizen is also less loyal to the British government. This was recently refled in a poll which showed 54% of Canadians believe Canada should end all ties to the British monarchy(Ipsos, 2023). Overall, Canada has been becoming more and more legally distant from the British Monarchy, by signing treaties independantly, allowing internal justices systems, the patriation of our constituion, and more. However, the Canadian government is still very loyal to Britain, and despite our legal separation, we still have a very close relationship.");
 }
 
 pub fn build_quiz() -> [QuizBlock; 16] {
@@ -135,7 +135,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
         ],
         answer_explanation: "After the assassination of Archduke Franz Ferdinand, the heir to the throne of Austria-Hungary, 
         Austria-Hungary declared war on Serbia. As Canada was still a colony of the British Empire, the Prime Minister at the time, 
-        Robert Borden, decided to wait for instructions from the Monarchy",
+        Robert Borden, decided to wait for instructions from the Monarchy. This was a very early example of Canada's loyalty to the British Monarchy, and it shows us how closely Canada and Britain were intertwined",
     },
     QuizBlock {
         date: Date {
@@ -162,7 +162,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: false,
             },
         ],
-        answer_explanation: "In response to Britain's request for soldiers, Canada sent 25,000 soldiers, and started the creation of the War Measures Act, which gave the government much more power during wars, such as the ability to censor the press, and the power to declare the Military Service Act",
+        answer_explanation: "In response to Britain's request for soldiers, Canada sent 25,000 soldiers, and started the creation of the War Measures Act, which gave the government much more power during wars, such as the ability to censor the press, and the power to declare the Military Service Act. Again, this was a early example of Canada's loyalty",
     },
     QuizBlock {
         date: Date {
@@ -216,7 +216,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: false,
             },
         ],
-        answer_explanation: "At the time, the current Prime Minister was Robert Borden. In response to the French outcry, he called an election known as the \"Khaki Election\"(Khaki is the colour of the Canadian Armed Forces uniform), which was primary fought on the issue of conscription. Borden won the election, and continued the conscription program",
+        answer_explanation: "At the time, the current Prime Minister was Robert Borden. In response to the French outcry, he called an election known as the \"Khaki Election\"(Khaki is the colour of the Canadian Armed Forces uniform), which was primary fought on the issue of conscription. Borden won the election, and continued the conscription program. This shows that the Canadian public supported the war, and so supported the Monarchy",
     },
     QuizBlock {
         date: Date {
@@ -243,7 +243,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: false,
             },
         ],
-        answer_explanation: "Canada had contributed a lot to the war, by sending many soldiers to Britain and providing more than 3 billion dollars in US money, and tons of equipment and raw materials to Britain. Initially, Canada was just brought in for deliberations, but would not be allowed to sign the treaty, as it was a British Colony. However, Canada contributed a lot to the war, and felt that they deserved to sign",
+        answer_explanation: "Canada had contributed a lot to the war, by sending many soldiers to Britain and providing more than 3 billion dollars in US money, and tons of equipment and raw materials to Britain. Initially, Canada was just brought in for deliberations, and would not be allowed to sign the treaty, as it was a British Colony. However, Canada contributed a lot to the war, and felt that they deserved to sign. This was a major step in Canadian distancing from the British Monarchy, as it was one of the first times Canada signed an international treaty independantly, and we had never signed one of this magnitude",
     },
     QuizBlock {
         date: Date {
@@ -270,7 +270,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: false,
             },
             ],
-            answer_explanation: "The Statue of Westminster was introduced because it was felt that British Colonies should be considered as their own governing bodies and should be allowed a justice system not invovled with the Crown. Canada embraced this change fully, and it was a major step towards Canada's independence",
+            answer_explanation: "The Statue of Westminster was introduced because it was felt that British Colonies should be considered as their own governing bodies and should be allowed a justice system not invovled with the Crown. Canada embraced this change fully, and it was a major step towards Canada's independence, as it represented Britain recognizing Canada for being a body that should have and purely internal justice system not involved with the Crown",
             },
         QuizBlock {
             date: Date {
@@ -297,7 +297,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                     is_correct: true,
                 },
             ],
-            answer_explanation: "The government predicted a high amount of casualties, and discouraged citizens from volunteering in Infantry Battalions. Instead, they provided resources to Britain, such as food, equipment, and raw materials. This would help the cause, and make sure Canada would not suffer from a large population loss due to the war",
+            answer_explanation: "The government predicted a high amount of casualties, and discouraged citizens from volunteering in Infantry Battalions. Instead, they provided resources to Britain, such as food, equipment, and raw materials. This would help the cause, and make sure Canada would not suffer from a large population loss due to the war. This is another step towards Canada's independence, as it recognized its peoples' lives as being more valuable than the British war",
         },
     QuizBlock {
         date: Date {
@@ -324,7 +324,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: true,
             },
         ],
-        answer_explanation: "France had just fallen, and Britain was in desperate need of help. Britain was struggling from German submarines, and so asked Canada to provide defense from them. Additionally, they needed more soldiers, equipment, and supplies",
+        answer_explanation: "France had just fallen, and Britain was in desperate need of help. Britain was struggling from German submarines, and so asked Canada to provide defense from them. Additionally, they needed more soldiers, equipment, and supplies. This shows how Canada and Britain are still very closely intertwined, and shows how despite Canada's growing independence, they are still very loyal",
     },
     QuizBlock {
         date: Date {
@@ -351,7 +351,7 @@ pub fn build_quiz() -> [QuizBlock; 16] {
                 is_correct: false,
             },
         ],
-        answer_explanation: "Known as the \"Billion Dollar Gift\", Canada sent over 3 billion dollars to Britian to help fund the war. This was a massive amount of money, and was a huge help to Britain",
+        answer_explanation: "Known as the \"Billion Dollar Gift\", Canada sent over 3 billion dollars to Britian to help fund the war. This was a massive amount of money, and was a huge help to Britain. Again, this shows Canada's steady loyalty to Britain at the time, despite Canada's growing legal separation",
     },
 QuizBlock {
     date: Date {
@@ -378,7 +378,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "Canada flately refuses to assit in the invasion, one of only a few times Canada has refused to assist Britain in a war",
+    answer_explanation: "Canada flately refuses to assit in the invasion, one of only a few times Canada has refused to assist Britain in a war. This was Canada making an statement about a British war, and shows us that Canada is not afraid to state our own opinions, despite our close relationship with Britain",
 },
 
 QuizBlock {
@@ -406,7 +406,7 @@ QuizBlock {
             is_correct: true,
         },
     ],
-    answer_explanation: "This marked a major step towards Canada's independence, as having an independant flag, to the world, is a sign of independence from Britain. The committee designed the current Canadian flag, which was adopted in 1965. The flag was designed by George Stanley, and was based on the flag of the Royal Military College of Canada",
+    answer_explanation: "The committee designed the current Canadian flag, which was adopted in 1965. The flag was designed by George Stanley, and was based on the flag of the Royal Military College of Canada. This marked a major step towards Canada's independence, as having an independant flag, to the world, is a sign of independence from Britain",
 },
 QuizBlock {
     date: Date {
@@ -433,7 +433,7 @@ QuizBlock {
             is_correct: true,
         },
     ],
-    answer_explanation: "The referendum ended in a 40/60 split, with 60% of Quebecers voting to stay with Canada. The fact that this was called at all shows us how the Quebecois feel about Canada, and how they feel about their relationship with the British Monarchy",
+    answer_explanation: "The referendum ended in a 40/60 split, with 60% of Quebecers voting to stay with Canada. The fact that this was called at all shows us how the Quebecois feel about Canada, and how they feel about their relationship with the British Monarchy. Unsurprisingly, there has rarely been much support for Britain in Quebec, due to a large amount of French Canadians. This shows us how a large part of Canada is not loyal to the British Monarchy",
 },
 QuizBlock {
     date: Date {
@@ -460,7 +460,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "Patriating the Canadian Constitution and creating a Charter of Rights and Freedoms was a significant step towards gaining favour with Canadians and ensuring their rights and freedoms are protected",
+    answer_explanation: "Patriating the Canadian Constitution and creating a Charter of Rights and Freedoms was a incredibly significant step towards full independence from Britain. This allowed Canada to modify our constitution without British approval. This was, again, a major step towards Canadaian legal independence from Britain",
 },
 QuizBlock {
     date: Date {
@@ -487,7 +487,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "In a famous speech by Jean Chrietien, he talked about how important Quebec was to Canada, and how it would be a great loss to Canada if Quebec were to secede. He made this speech, because Quebec truly is an important part of Canada, and the Canadian economy would suffer greatly from this seccesion. This time, the vote was incredibly close",
+    answer_explanation: "In a famous speech by Jean Chrietien, he talked about how important Quebec was to Canada, and how it would be a great loss to Canada if Quebec were to secede. He made this speech because Quebec is an important part of Canada, and the Canadian economy would suffer greatly from this seccesion. This time, the vote was incredibly close, at around 50.6% to 49.4%. This shows us the rising support for Quebec separatism from the last vote, which ended 60%/40%, which shows us Quebecs interest in removing themselves from Canada, and by extension, the British Monarchy",
 },
 QuizBlock {
     date: Date {
@@ -514,7 +514,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "Expressing support for Prince Harry and Megan's decision to move to Canada is a great diplomatic approach that respects their personal choices, while also making sure the Queen still understand that the prime minister is loyal to her",
+    answer_explanation: "Expressing support for Prince Harry and Megan's decision to move to Canada is a great diplomatic approach that respects their personal choices, while also making sure the Queen still understand that the Prime Minister is loyal to her. The Queen allowed Harry and Megan to live between Canada and Britain, and our Prime Minister expressing support for the decision shows us Canada's respect and loyalty for Britain",
 },
 QuizBlock {
     date: Date {
@@ -541,7 +541,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "After the Queen had passed, the prime minister made a heartfelt speech, where he was moved to tears. This showed our appreciation for the British Monarchy, and how much we value our relationship with Britain",
+    answer_explanation: "After the Queen had passed, the Prime Minister made a heartfelt speech, where he was moved to tears. This showed our appreciation for the British Monarchy, and how much we value our continuing relationship with Britain",
 },
     ];
 }

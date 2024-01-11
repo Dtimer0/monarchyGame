@@ -5,7 +5,7 @@ use crate::toolbox::*;
 pub fn cyoa() {
     println!("Welcome to this choose your own adventure game. There are an estimated 4.5 billion different paths you can take! This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public opinion rating, or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be showed to you at the end of the game. Otherwise, certain decisions can lead to you losing the game, such as being kicked out of office. You win the game if you make it to the end with over 60% averaged public opinion and British opinion. Good luck!");
     let web = build_cyoa();
-    let mut current = "start";
+    let mut current = "start".to_owned();
     let mut public_opinion = 1.0;
     let mut british_opinion = 1.0;
     let mut qs_answered = 1.0;
@@ -75,7 +75,11 @@ pub fn cyoa() {
         let answer = readline();
         let answer_: CyoaAnswer;
         qs_answered += 1.0;
-        if let Ok(answer) = answer.parse::<i8>() {
+        if answer.starts_with("goto") {
+            current = answer[5..].to_owned();
+            continue;
+        }
+        else if let Ok(answer) = answer.parse::<i8>() {
             let answer: usize = (answer - 1) as usize;
             answer_ = current_block.answers[answer].clone();
 
@@ -90,7 +94,7 @@ pub fn cyoa() {
         }
         public_opinion += answer_.public_favor;
         british_opinion += answer_.british_favor;
-        current = answer_.pointer_alias;
+        current = answer_.pointer_alias.to_string();
         println!("");
         println!("Current Public Opinion:");
         print!("[");
@@ -116,11 +120,11 @@ pub fn cyoa() {
             historical_accuracy += 1.0;
         }
         if round((public_opinion / qs_answered) * 100.0, 2) < 10.0 {
-            current = "canadianoverthrow";
+            current = "canadianoverthrow".to_string();
             break 'outer;
         }
         if round((british_opinion / qs_answered) * 100.0, 2) < 10.0 {
-            current = "britishimpeach";
+            current = "britishimpeach".to_string();
             break 'outer;
         }
         if answer_.game_over {
@@ -135,22 +139,24 @@ pub fn cyoa() {
             println!("{}", i.reason);
             println!("Game Over!");
             println!("Your historical accuracy: {}%", round(historical_accuracy / qs_answered * 100.0, 2));
-            return;
         }
     }
     if current == "end"{
         if (round((british_opinion / qs_answered) * 100.0, 2) + round((public_opinion / qs_answered) * 100.0, 2)) / 2.0 > 60.0{
             println!("You won!");
             println!("Your historical accuracy: {}%", round(historical_accuracy / qs_answered * 100.0, 2));
-            return;
+            println!();
+            println!("Now that you've won, you can use a little cheat to help you manuver the tree better. if you type \"goto\", followed by a question alias(Can be found in build_cyoa()), you will be taken to that question immediately.");
+
         } else {
             println!("You lost, try again and see if you can get a better score!");
             println!("Your historical accuracy: {}%", round(historical_accuracy / qs_answered * 100.0, 2));
-            return;
         }
     
     }
-
+    println!();
+    println!("This game reflects the many possible branches we could have arrived at today, and hopefully has given you insight on how the decisions of the past have affected the present.");
+    return;
 }
 
 
