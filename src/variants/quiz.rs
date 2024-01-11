@@ -506,7 +506,7 @@ QuizBlock {
             is_correct: true,
         },
         QuizAnswer {
-            answer: "Publicly apologize to the queen, and attempt to deny them citizenship on the grounds of suspicious criminal history",
+            answer: "Publicly apologize to the Queen, and attempt to deny them citizenship on the grounds of suspicious criminal history",
             is_correct: false,
         },
         QuizAnswer {
@@ -522,7 +522,7 @@ QuizBlock {
         month: "September",
         day: 9,
     },
-    question: "The queen has just died.",
+    question: "The Queen has just died.",
     answers: [
         QuizAnswer {
             answer: "Make a heartfelt speech about her passing, and how much Canada will miss her",
@@ -541,7 +541,7 @@ QuizBlock {
             is_correct: false,
         },
     ],
-    answer_explanation: "After the queen had passed, the prime minister made a heartfelt speech, where he was moved to tears. This showed our appreciation for the British Monarchy, and how much we value our relationship with Britain",
+    answer_explanation: "After the Queen had passed, the prime minister made a heartfelt speech, where he was moved to tears. This showed our appreciation for the British Monarchy, and how much we value our relationship with Britain",
 },
     ];
 }
