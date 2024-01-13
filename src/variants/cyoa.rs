@@ -1,9 +1,11 @@
 use std::collections::HashMap;
+use std::time::Duration;
 use crate::types::*;
 use crate::toolbox::*;
 // As the game progresses, bonuses become larger, and penalties become smaller, as you are expected to lose more than you win.
 pub fn cyoa() {
-    println!("Welcome to this choose your own adventure game. There are an estimated 4.5 billion different paths you can take! This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public opinion rating, or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be showed to you at the end of the game. Otherwise, certain decisions can lead to you losing the game, such as being kicked out of office. You win the game if you make it to the end with over 60% averaged public opinion and British opinion. Good luck!");
+    println!("Welcome to this choose your own adventure game. There are an estimated 4.5 billion different paths you can take! This game has a public opinion rating, British opinion rating, and historical accuracy rating. If the public or British opinion rating ever fall below 10%, you will immediately lose. Historical accuracy rating will be shown to you at the end of the game. Otherwise, certain decisions can lead to you losing the game, such as being kicked out of office. You win the game if you make it to the end with over 60% averaged public opinion and British opinion. Good luck!");
+    std::thread::sleep(Duration::from_secs(10));
     let web = build_cyoa();
     let mut current = "start".to_owned();
     let mut public_opinion = 1.0;
@@ -146,7 +148,7 @@ pub fn cyoa() {
             println!("You won!");
             println!("Your historical accuracy: {}%", round(historical_accuracy / qs_answered * 100.0, 2));
             println!();
-            println!("Now that you've won, you can use a little cheat to help you manuver the tree better. if you type \"goto\", followed by a question alias(Can be found in build_cyoa()), you will be taken to that question immediately.");
+            println!("Now that you've won, you can use a little cheat to help you maneuver the tree better. if you type \"goto\", followed by a question alias(Can be found in build_cyoa()), you will be taken to that question immediately.");
 
         } else {
             println!("You lost, try again and see if you can get a better score!");
@@ -604,7 +606,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
         },
         CyoaBlock {
             date: Date {day: 1, month: "January", year: 1940},
-            question: "France has fallen, and Canada is now Britains most important ally",
+            question: "France has fallen, and Canada is now Britain's most important ally",
             answers: [
                 CyoaAnswer {
                     is_historically_accurate: false,
@@ -618,7 +620,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                     is_historically_accurate: false,
                     game_over: false,
                     pointer_alias: "gift",
-                    answer: "Provide naval defence against Germany submarines",
+                    answer: "Provide naval defense against Germany submarines",
                     public_favor: 0.8,
                     british_favor: 0.8,
                 },
@@ -762,7 +764,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
         },
         CyoaBlock {
             date: Date {day: 29, month: "October", year: 1956},
-            question: "Britain, France, and Israel device to invade Egypt and the Gaza Strip, due to the Egypt government seizing the Suez Canal. This is worrying to the British because Britain has a lot of oil that travels through, and now Egypt has the power to cripple Britain's oil economy. Britain asks for our help",
+            question: "Britain, France, and Israel decide to invade Egypt and the Gaza Strip, due to the Egypt government seizing the Suez Canal. This is worrying to the British because Britain has a lot of oil that travels through, and now Egypt has the power to cripple Britain's oil economy. Britain asks for our help",
             answers: [
                 CyoaAnswer {
                     is_historically_accurate: true,
@@ -919,7 +921,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
             alias: "rene",
         },
         CyoaBlock {
-            date: Date {day: 4, month: "Novemeber", year: 1963},
+            date: Date {day: 4, month: "November", year: 1963},
             question: "Britain is extremely angry that Canada is supporting Egypt. They say you have one chance to remedy your mistake",
             answers: [
                 CyoaAnswer {
@@ -1013,7 +1015,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                     is_historically_accurate: false,
                     game_over: false,
                     pointer_alias: "nocontrol",
-                    answer: "Assassinate Egypts president, Abdel Nasser",
+                    answer: "Assassinate Egypt's president, Abdel Nasser",
                     public_favor: 0.3,
                     british_favor: 0.7,
                 },
@@ -1168,7 +1170,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
                 CyoaAnswer {
                     is_historically_accurate: false,
                     game_over: false,
-                    pointer_alias: "moving",
+                    pointer_alias: "qinvasion",
                     answer: "Talk about how Canada would invade Quebec to take it back if it succeeds in succession",
                     public_favor: 0.0,
                     british_favor: 0.4,
@@ -1271,7 +1273,7 @@ pub fn build_cyoa() -> Vec<CyoaBlock> {
             alias: "loss",
         },
         CyoaBlock {
-            date: Date {day: 23, month: "Febuary", year: 1983},
+            date: Date {day: 23, month: "February", year: 1983},
             question: "The public finds out that you thought printing more money would reduce inflation",
             answers: [
                 CyoaAnswer {
@@ -1410,7 +1412,7 @@ pub fn build_over() -> Vec<GameOver> {
         },
         GameOver {
             alias: "axisw",
-            reason: "Britain has fallen and despite Canada remaining neutral, the Axis is unstoppable, and without Britains protection, Canada is easily overpowered by the Axis",
+            reason: "Britain has fallen and despite Canada remaining neutral, the Axis is unstoppable, and without Britain's protection, Canada is easily overpowered by the Axis",
         },
         GameOver {
             alias: "axisw2",
@@ -1422,7 +1424,7 @@ pub fn build_over() -> Vec<GameOver> {
         },
         GameOver {
             alias: "display",
-            reason: "Britain feels that the display of force is excessive, and forces a new series of elections, entirely reseting the Canadian government. "
+            reason: "Britain feels that the display of force is excessive, and forces a new series of elections, entirely resetting the Canadian government. "
         }
     ])
 
